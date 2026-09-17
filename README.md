@@ -26,9 +26,9 @@ kubectl get nodes
 ## Progress
 
 - [x] Module 1 — Pods (`pod.yaml`)
-- [ ] Module 2 — Deployments
-- [ ] Module 3 — Services
-- [ ] Module 4 — ConfigMaps & Secrets
+- [x] Module 2 — Deployments (`deployment.yaml`)
+- [x] Module 3 — Services (`service.yaml`)
+- [x] Module 4 — ConfigMaps & Secrets (`config.yaml`)
 - [ ] Module 5 — Volumes
 - [ ] Module 6 — Namespaces
 - [ ] Module 7 — Ingress
