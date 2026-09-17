@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_ENV: "staging"
+  LOG_LEVEL: "debug"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+stringData:
+  DB_PASSWORD: "supersecret123"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-demo
+spec:
+  containers:
+    - name: app
+      image: busybox
+      command: ["sleep", "3600"]
+      envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secret
