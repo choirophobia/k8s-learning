@@ -29,7 +29,7 @@ kubectl get nodes
 - [x] Module 2 — Deployments (`deployment.yaml`)
 - [x] Module 3 — Services (`service.yaml`)
 - [x] Module 4 — ConfigMaps & Secrets (`config.yaml`)
-- [ ] Module 5 — Volumes
+- [x] Module 5 — Volumes (`volumes.yaml`)
 - [ ] Module 6 — Namespaces
 - [ ] Module 7 — Ingress
 - [ ] Module 8 — Health checks
