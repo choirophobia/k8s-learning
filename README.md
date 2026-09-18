@@ -31,7 +31,7 @@ kubectl get nodes
 - [x] Module 4 — ConfigMaps & Secrets (`config.yaml`)
 - [x] Module 5 — Volumes (`volumes.yaml`)
 - [x] Module 6 — Namespaces (`namespaces.yaml`)
-- [ ] Module 7 — Ingress
+- [x] Module 7 — Ingress (`ingress.yaml`, `kind-ingress-cluster.yaml`)
 - [ ] Module 8 — Health checks
 - [ ] Module 9 — Helm
 - [ ] Module 10 — CI integration
