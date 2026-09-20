@@ -34,4 +34,4 @@ kubectl get nodes
 - [x] Module 7 — Ingress (`ingress.yaml`, `kind-ingress-cluster.yaml`)
 - [x] Module 8 — Health checks (`healthcheck-deployment.yaml`)
 - [x] Module 9 — Helm (`mychart/`)
-- [ ] Module 10 — CI integration
+- [x] Module 10 — CI integration (`.github/workflows/ci.yml`)

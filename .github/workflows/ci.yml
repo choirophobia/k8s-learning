@@ -1,0 +1,38 @@
+name: k8s CI smoke test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ephemeral-cluster-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create ephemeral kind cluster
+        uses: helm/kind-action@v1
+        with:
+          cluster_name: ci-test
+
+      - name: Deploy manifests
+        run: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+
+      - name: Wait for rollout
+        run: kubectl wait --for=condition=available deployment/hello-deploy --timeout=60s
+
+      - name: Smoke test the Service
+        run: |
+          kubectl run tmp-curl --rm -i --restart=Never --image=busybox --command -- \
+            wget -qO- --timeout=10 hello-svc | grep -i "Welcome to nginx"
+
+      - name: Chaos-lite - kill a pod and confirm self-healing
+        run: |
+          POD=$(kubectl get pods -l app=hello -o jsonpath='{.items[0].metadata.name}')
+          kubectl delete pod "$POD"
+          kubectl wait --for=condition=available deployment/hello-deploy --timeout=60s
+          kubectl get pods -l app=hello
